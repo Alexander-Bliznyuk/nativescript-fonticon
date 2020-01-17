@@ -4,14 +4,12 @@
 	"description": "Use custom font icon collections seamlessly with NativeScript.",
 	"main": "nativescript-fonticon",
 	"files": [
-		"nativescript-fonticon.d.ts",
 		"nativescript-fonticon.js.map",
 		"nativescript-fonticon.js",
-		"lib.d.ts",
 		"lib.js.map",
 		"lib.js",
 		"LICENSE",
-		"README.md"
+    "README.md"
 	],
 	"typings": "index.d.ts",
 	"nativescript": {

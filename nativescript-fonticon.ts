@@ -24,16 +24,17 @@ export class TNSFontIcon {
         console.log('----------');
         console.log(`Loading collection '${currentName}' from file: ${path}`);
       }
-      const cssFile = knownFolders.currentApp().getFile(path);
-      return new Promise((resolve, reject) => {
-        cssFile.readText().then((data) => {
-          const map = lib.mapCss(data, TNSFontIcon.debug);
-          TNSFontIcon.css[currentName] = map;
-          resolve();
-        }, (err) => {
-          reject(err);
-        });
-      });
+      return new Promise(function (resolve, reject) {
+        try {
+          const cssFile = knownFolders.currentApp().getFile(path);
+          const cssFileText = cssFile.readTextSync()
+          const mapCss = lib.mapCss(cssFileText, TNSFontIcon.debug)
+          TNSFontIcon.css[currentName] = mapCss;
+          resolve()
+        } catch (e) {
+          reject(e)
+        }
+      })
     };
 
     const loadFiles = (): Promise<any> => {

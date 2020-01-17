@@ -21,15 +21,17 @@ var TNSFontIcon = (function () {
                 console.log('----------');
                 console.log("Loading collection '" + currentName + "' from file: " + path);
             }
-            var cssFile = file_system_1.knownFolders.currentApp().getFile(path);
             return new Promise(function (resolve, reject) {
-                cssFile.readText().then(function (data) {
-                    var map = lib.mapCss(data, TNSFontIcon.debug);
-                    TNSFontIcon.css[currentName] = map;
+                try {
+                    var cssFile = file_system_1.knownFolders.currentApp().getFile(path);
+                    var cssFileText = cssFile.readTextSync();
+                    var mapCss = lib.mapCss(cssFileText, TNSFontIcon.debug);
+                    TNSFontIcon.css[currentName] = mapCss;
                     resolve();
-                }, function (err) {
-                    reject(err);
-                });
+                }
+                catch (e) {
+                    reject(e);
+                }
             });
         };
         var loadFiles = function () {
