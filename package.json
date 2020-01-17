@@ -2,7 +2,17 @@
 	"name": "nativescript-fonticon",
 	"version": "2.0.0",
 	"description": "Use custom font icon collections seamlessly with NativeScript.",
-	"main": "nativescript-fonticon",
+  "main": "nativescript-fonticon",
+  "files": [
+    "nativescript-fonticon.d.ts",
+    "nativescript-fonticon.js.map",
+    "nativescript-fonticon.js",
+    "lib.d.ts",
+    "lib.js.map",
+    "lib.js",
+    "LICENSE",
+    "README.md"
+  ],
 	"typings": "index.d.ts",
 	"nativescript": {
 		"platforms": {
@@ -12,10 +22,6 @@
 	},
 	"scripts": {
 		"build": "tsc",
-		"demo.ios": "npm run preparedemo && cd ../demo && tns run ios --emulator",
-		"demo.android": "npm run preparedemo && cd ../demo && tns run android --emulator",
-		"preparedemo": "npm run build && cd ../demo && tns plugin remove nativescript-fonticon && tns plugin add ../src && tns install && npx rimraf -- package-lock.json",
-		"setup": "cd ../demo && npm install && cd ../src && npm run build && cd ../demo && tns plugin add ../src && cd ../src",
 		"test": "cross-env TS_NODE_PROJECT=test/tsconfig.json mocha --require ts-node/register --watch-extensions ts \"test/**/*spec.ts\"",
 		"lint": "tslint --project ./ --format stylish"
 	},
